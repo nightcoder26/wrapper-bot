@@ -15,12 +15,34 @@ st.markdown(
     html, body, [class*="st-"] {
         font-family: 'Poppins', sans-serif;
     }
-     .my {
-        color: #4b4fff !important; 
-        font-size: 36px; 
-        font-family: 'Poppins';
-        font-weight: bold;
+.my {
+    font-size: 36px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    background: linear-gradient(45deg, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 20s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
     }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
     </style>
     """,
     unsafe_allow_html=True
@@ -32,7 +54,6 @@ if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
-    # Hugging Face API Request (Fix if needed)
     HF_API_KEY = st.secrets["HUGGING_FACE"]
     API_URL = "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-large"
     HEADERS = {"Authorization": f"Bearer {HF_API_KEY}"}

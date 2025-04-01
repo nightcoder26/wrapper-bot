@@ -23,12 +23,34 @@ st.markdown(
     html, body, [class*="st-"] {
         font-family: 'Poppins', sans-serif;
     }
-     .my {
-        color: #4b4fff !important; 
-        font-size: 36px; 
-        font-family: 'Poppins';
-        font-weight: bold;
+   .my {
+    font-size: 36px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    background: linear-gradient(45deg, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff, 
+        #4b4fff, #ff4bff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 20s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
     }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
     </style>
     """,
     unsafe_allow_html=True
@@ -37,7 +59,7 @@ col1, col2 = st.columns(2)
 for i, prompt in enumerate(example_prompts):
     with (col1 if i % 2 == 0 else col2):
         if st.button(prompt, key=f"btn_{i}"):
-            st.session_state.selected_prompt = prompt  # Store selected prompt
+            st.session_state.selected_prompt = prompt  
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
