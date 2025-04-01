@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.markdown('<h1 class="my"> AI Wrapper bots</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="my"> AI Chat bots</h1>', unsafe_allow_html=True)
 st.divider()
 
 st.markdown('<p> Interact with the bots on the left</p>', unsafe_allow_html=True)
